@@ -1,6 +1,10 @@
 // Entity types for Crumb's storage layer. Timestamps are epoch milliseconds (Date.now()).
 // This file has no Dexie or React imports — it's plain data shapes.
 
+import type { ScheduleStepTemplate, ScheduledStep } from '../domain/timing'
+
+export type { ScheduleStepTemplate, ScheduledStep }
+
 export type StarterStorage = 'counter' | 'fridge'
 
 export interface Starter {
@@ -56,13 +60,6 @@ export interface RecipeFlourComponent {
   percent: number
 }
 
-// Defined fully in the timing engine phase. Kept as a typed placeholder so Recipe.steps
-// has a stable shape to compile against until then.
-export interface ScheduleStepTemplate {
-  id: string
-  name: string
-}
-
 export interface Recipe {
   id: string
   name: string
@@ -77,12 +74,6 @@ export interface Recipe {
 }
 
 export type BakeStatus = 'planned' | 'in-progress' | 'done'
-
-// Defined fully in the timing engine / reverse scheduling phase.
-export interface ScheduledStep {
-  id: string
-  name: string
-}
 
 export interface Bake {
   id: string
